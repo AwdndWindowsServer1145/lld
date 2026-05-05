@@ -1,0 +1,32 @@
+{
+    "ai_temperature": {
+    "description": "AI 分析温度参数（控制随机性）",
+    "type": "float",
+    "hint": "范围 0-2，值越低越确定，值越高越随机。推荐 0.3-0.7",
+    "default": 0.5,
+    "slider": {
+      "min": 0,
+      "max": 2,
+      "step": 0.1
+    }
+  },
+  "max_tokens": {
+    "description": "AI 响应最大令牌数",
+    "type": "int",
+    "hint": "控制响应长度，默认 2000，可根据需要调整",
+    "default": 2000
+  },
+  "enable_web_search": {
+    "description": "是否启用网页搜索（需要配置搜索API）",
+    "type": "bool",
+    "hint": "启用后，AI可以搜索最新新闻。目前为演示功能",
+    "default": false
+  },
+  "analysis_language": {
+    "description": "分析语言",
+    "type": "string",
+    "hint": "选择分析报告的语言",
+    "options": ["中文", "English"],
+    "default": "中文"
+  }
+}
