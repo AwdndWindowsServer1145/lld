@@ -1,14 +1,149 @@
-# astrbot-plugin-helloworld
+# 🌍 国际形势分析插件 (International Situation Analysis Plugin)
 
-AstrBot 插件模板 / A template plugin for AstrBot plugin feature
+一个基于 DeepSeek AI 的智能国际形势分析插件，支持实时分析、深度报告、地区对比和可视化输出。
 
-> [!NOTE]
-> This repo is just a template of [AstrBot](https://github.com/AstrBotDevs/AstrBot) Plugin.
-> 
-> [AstrBot](https://github.com/AstrBotDevs/AstrBot) is an agentic assistant for both personal and group conversations. It can be deployed across dozens of mainstream instant messaging platforms, including QQ, Telegram, Feishu, DingTalk, Slack, LINE, Discord, Matrix, etc. In addition, it provides a reliable and extensible conversational AI infrastructure for individuals, developers, and teams. Whether you need a personal AI companion, an intelligent customer support agent, an automation assistant, or an enterprise knowledge base, AstrBot enables you to quickly build AI applications directly within your existing messaging workflows.
+- **作者**: 斯基瓦德·杨
+- **版本**: v3.0.0
 
-# Supports
+## ✨ 核心功能
 
-- [AstrBot Repo](https://github.com/AstrBotDevs/AstrBot)
-- [AstrBot Plugin Development Docs (Chinese)](https://docs.astrbot.app/dev/star/plugin-new.html)
-- [AstrBot Plugin Development Docs (English)](https://docs.astrbot.app/en/dev/star/plugin-new.html)
+### 📊 智能分析
+- **`/situation`** (别名: `/形势`, `/国际形势`) - AI 驱动的国际形势摘要
+- **`/situation_detail`** (别名: `/深度分析`, `/detail`) - 生成2000字深度分析报告
+- **`/hotspot`** (别名: `/热点`, `/hot`) - 识别全球8-10个热点问题
+
+### 🌐 区域与国家分析
+- **`/region <地区>`** (别名: `/地区`, `/地区分析`) - 深度分析特定地区形势
+  - 支持: 中东、亚太、东欧、西欧、北美、拉美、非洲、南亚、东南亚
+- **`/compare <国1> <国2>`** (别名: `/对比`, `/比较`) - 对比分析两个国家
+
+### 🎨 可视化输出
+- **`/situation_pic`** (别名: `/形势图`, `/图片报告`) - 生成美观的分析图片报告
+- 使用 HTML+CSS 渲染，支持渐变背景、卡片设计
+
+### 💬 交互式对话
+- **`/situation_chat`** (别名: `/形势对话`, `/chat`) - 进入对话模式
+  - 支持连续多轮问答
+  - 5分钟超时自动退出
+  - 发送「退出」立即结束对话
+
+## 🚀 技术亮点
+
+### 1. AI 驱动
+- 使用 **DeepSeek Chat** 模型
+- 支持自定义温度参数 (0-2)
+- 可配置最大令牌数
+- 内置 API Key
+
+### 2. 丰富的消息处理
+- ✅ 指令与别名支持
+- ✅ 事件监听器
+- ✅ 会话控制器 (Session Control)
+- ✅ 文转图 (HTML to Image)
+- ✅ 配置管理 (AstrBotConfig)
+- ✅ 生命周期管理
+
+### 3. 专业分析报告
+所有分析由 AI 生成，包含：
+- 地缘政治分析
+- 经济形势评估
+- 军事动态监测
+- 非传统安全挑战
+- 趋势预测与建议
+
+## 📋 使用指南
+
+### 基础指令
+```
+/situation              # 获取形势摘要
+/situation_detail       # 深度分析报告
+/region 中东            # 分析中东地区
+/compare 美国 中国      # 对比两个国家
+/hotspot               # 查看国际热点
+```
+
+### 高级功能
+```
+/situation_pic          # 生成图片报告
+/situation_chat        # 进入对话模式
+/situation_help        # 查看帮助信息
+```
+
+### 对话模式示例
+```
+用户: /situation_chat
+机器人: 💬 已进入对话模式！可连续提问，发送「退出」结束
+
+用户: 俄乌冲突最新进展如何？
+机器人: 💬 [AI 分析回答...]
+
+用户: 这对全球能源市场有什么影响？
+机器人: 💬 [AI 继续回答...]
+
+用户: 退出
+机器人: ✅ 已退出对话模式
+```
+
+## 🔧 配置说明
+
+插件支持通过 AstrBot WebUI 配置：
+
+| 配置项 | 类型 | 默认值 | 说明 |
+|--------|------|--------|------|
+| `deepseek_api_key` | string | sk-79815c1de1304dc08366cda3df6b6733 | DeepSeek API Key |
+| `ai_temperature` | float | 0.5 | AI 温度参数 (0-2) |
+| `max_tokens` | int | 2000 | 最大令牌数 |
+| `enable_web_search` | bool | false | 是否启用网页搜索 |
+| `analysis_language` | string | 中文 | 分析语言 |
+
+### 依赖
+aiohttp>=3.8.0
+```
+
+## 🎯 参赛特色
+
+1. **完整性**: 覆盖 AstrBot 插件开发文档所有核心功能
+2. **专业性**: 提供专业的国际形势分析，非简单新闻聚合
+3. **交互性**: 支持对话模式，用户体验优秀
+4. **可视化**: 支持生成美观的图片报告
+5. **文档完善**: 提供详细的使用说明和技术文档
+6. **错误处理**: 完善的异常捕获和日志记录
+
+## 📝 更新日志
+
+### v3.0.0 (2026-05-05)
+- ✨ 使用 DeepSeek AI 替代 RSS 新闻源
+- ✨ 新增深度分析报告功能
+- ✨ 新增地区分析和国家对比功能
+- ✨ 新增文转图功能
+- ✨ 新增会话控制（对话模式）
+- ✨ 完善错误处理和日志
+- ✨ 新增指令别名支持
+- 📝 更新文档和 README
+
+### v2.0.0 (2026-05-05)
+- ✨ 初始版本，支持基础形势分析
+- ✨ 集成 DeepSeek API
+
+### v1.0.0 (2026-05-05)
+- ✨ 项目初始化
+
+## ⚠️ 免责声明
+
+- 本插件分析结果由 AI 生成，基于模型训练数据（截至2024年）
+- 分析结果仅供参考，不构成任何投资、政策或战略建议
+- 请结合实时新闻和多方信源进行决策
+- 作者不对使用本插件产生的任何后果负责
+
+## 📞 联系方式
+
+- **GitHub**: [AwdndWindowsServer1145/lld](https://github.com/AwdndWindowsServer1145/lld)
+- **Author**: 斯基瓦德·杨
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+
+---
+
+**Powered by DeepSeek AI & AstrBot**
